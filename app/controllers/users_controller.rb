@@ -1,27 +1,22 @@
 class UsersController < ApplicationController
-
-  get '/users/:slug' do
-    @user = User.find_by_slug(params[:slug])
-    erb :'users/show'
-  end
-
+  
 
   get '/signup' do
     if !session[:user_id]
       erb :'users/create_user', locals: {message: "Please sign up before you sign in"}
     else
-      redirect to '/tweets'
+      redirect to '/'
     end
   end
 
   post '/signup' do 
-    if params[:username] == "" || params[:email] == "" || params[:password] == ""
+    if params[:username] == "" || params[:email] == "" || params[:password_digest] == ""
       redirect to '/signup'
     else
-      @user = User.new(:username => params[:username], :email => params[:email], :password => params[:password])
+      @user = User.new(:username => params[:username], :email => params[:email], :password_digest => params[:password])
       @user.save
       session[:user_id] = @user.id
-      redirect to '/tweets'
+      redirect to '/'
     end
   end
 
@@ -29,15 +24,15 @@ class UsersController < ApplicationController
     if !session[:user_id]
       erb :'users/login'
     else
-      redirect '/tweets'
+      redirect '/doctors'
     end
   end
 
   post '/login' do
     user = User.find_by(:username => params[:username])
-    if user && user.authenticate(params[:password])
+    if user #&& user.authenticate(params[:password_digest])
       session[:user_id] = user.id
-      redirect "/tweets"
+      redirect "/"
     else
       redirect to '/signup'
     end

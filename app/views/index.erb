@@ -1,1 +1,53 @@
-<h2> Welcome to Fwitter </h2>
+<!-- Marketing messaging and featurettes
+  ================================================== -->
+  <!-- Wrap the rest of the page in another container to center all the content. -->
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="img-circle" src="resources/images/4.jpeg" alt="Generic placeholder image" width="140" height="140">
+        <h2>Genetic Disease</h2>
+        <p>A genetic disorder is a genetic problem caused by one or more abnormalities in the genome, especially a condition that is present from birth (congenital). Most genetic disorders are quite rare and affect one person in every several thousands or millions.</p>
+        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="img-circle" src="resources/images/5.jpg alt="Generic placeholder image" width="140" height="140">
+        <h2>Chronic Disease</h2>
+        <p>A chronic disease is one lasting 3 months or more, by the definition of the U.S. National Center for Health Statistics. Chronic diseases generally cannot be prevented by vaccines or cured by medication, nor do they just disappear. ... Cardiovascular disease is a growing concern in the world.</p>
+        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <img class="img-circle" src="resources/images/6.jpg" alt="Generic placeholder image" width="140" height="140">
+        <h2>Communicable Disease</h2>
+        <p>Medical Definition of communicable disease:  an infectious disease transmissible (as from person to person) by direct contact with an affected individual or the individual's discharges or by indirect means (as by a vector)—compare contagious disease.</p>
+        <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+      </div><!-- /.col-lg-4 -->
+    </div><!-- /.row -->
+
+
+
+
+    <% if logged_in? %>   
+    <div style="border-style: solid; padding: 10px;">
+      <form action="/appointments" method="POST" >
+       <label>Date: </label><input id="meeting" type="date"  name="date"/>
+       <br>
+       <% @doctors.each do |doctor| %>
+       
+
+       <input id="checkbox_ID" type="checkbox" value=<%doctor.id%> > <%= doctor.name %>
+       <%= doctor.department%>
+       <br>
+       <% end %>
+<script>
+document.getElementById('checkbox_ID').value = doctor.id;
+</script>
+
+       <input type="submit" class="btn btn-info" style="left: 20px;" value="submit">
+     </form>
+   </div>
+   <%end%>
+ </div>
+</div>

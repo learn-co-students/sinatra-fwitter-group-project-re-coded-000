@@ -11,17 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2) do
+ActiveRecord::Schema.define(version: 4) do
 
-  create_table "tweets", force: :cascade do |t|
-    t.string  "content"
-    t.integer "user_id"
+  create_table "appointments", force: :cascade do |t|
+    t.datetime "appointment_datetime"
+    t.integer  "doctor_id"
+    t.integer  "user_id"
+  end
+
+  create_table "doctors", force: :cascade do |t|
+    t.string  "name"
+    t.integer "password_digest"
+    t.string  "email"
+    t.string  "department"
+  end
+
+  create_table "patients", force: :cascade do |t|
+    t.string  "name"
+    t.string  "email"
+    t.string  "password_digest"
+    t.integer "age"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
+    t.string  "username"
+    t.string  "email"
+    t.string  "password_digest"
+    t.integer "age"
   end
 
 end
