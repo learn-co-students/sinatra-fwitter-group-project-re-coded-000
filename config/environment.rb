@@ -1,3 +1,4 @@
+
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
@@ -9,3 +10,10 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_all 'app'
+
+
+
+
+
+
+

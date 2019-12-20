@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Index</th>
+      <th>Doctors Name</th>
+      <th>Department</th>
+      <th>Appointments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @doctors.each do |doctor| %>
+    <tr>
+      <th scope="row"><%= doctor.id %></th>
+      <td><%= doctor.name %></td>
+      <td><%= doctor.department %></td>
+      <!--<td><%= doctor.appointments %></td>-->
+    </tr>
+    <% end %>
+  </tbody>
+</table>
